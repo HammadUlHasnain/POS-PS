@@ -44,11 +44,9 @@ jobs:
           echo "pillow" >> requirements.txt
 
       - name: Build APK
-        # --product flag mobile me app ka display name set karta hai
-        run: flet build apk --project-name pos_ps --product "POS-PS"
+        run: flet build apk --project pos_ps --product "POS-PS"
 
       - name: Rename APK File
-        # Ye step generated apk ko POS-PS.apk me rename kar dega
         run: |
           find build/apk -name "*.apk" -exec mv {} build/apk/POS-PS.apk \;
 
