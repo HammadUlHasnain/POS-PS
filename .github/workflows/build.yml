@@ -18,11 +18,6 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -44,7 +39,8 @@ jobs:
           echo "pillow" >> requirements.txt
 
       - name: Build APK
-        run: flet build apk --project pos_ps --product "POS-PS"
+        # 'yes |' automatically terminal prompts ka jawab 'y' (yes) me de deta hai
+        run: yes | flet build apk --project pos_ps --product "POS-PS"
 
       - name: Rename APK File
         run: |
